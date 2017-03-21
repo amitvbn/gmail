@@ -1,0 +1,114 @@
+<div id="welcometext"></div>
+<hr>
+
+<button type="button">Inbox</button>
+<button type="button">Sent Mail</button>
+<button type="button">Draft</button>
+<button type="button">Trash</button>
+
+<table>
+  <thead>
+    <tr>
+    <th>Time</th>
+    <th>From</th>
+    <th>Subject</th>
+    <th>Mail</th>
+    </tr>
+  </thead>
+  <tbody id="inboxtable">
+  </tbody>
+</table>
+<script>
+var user_data =
+  {
+    "id": "55",
+    "mail_id": "39",
+    "email": "amitvbn@gmail.com",
+    "name": "amit",
+    "read": "0",
+    "timestamp": "2017-03-08 22:08:39",
+    "mail_details": {
+      "id": "39",
+      "sender": "amitvbn@gmail.com",
+      "subject": "Hi ",
+      "body": "Hi I am good",
+      "conversation_id": "20",
+      "timestamp": "2017-03-08 22:08:39",
+      "attachment_ids": null,
+      "draft": "0",
+      "sent_trash": "0"
+    }
+  }
+;
+
+
+var inbox_data = [
+  {
+    "id": "55",
+    "mail_id": "39",
+    "to": "amitvbn@gmail.com",
+    "trash": "0",
+    "read": "0",
+    "timestamp": "2017-03-08 22:08:39",
+    "mail_details": {
+      "id": "39",
+      "sender": "amitvbn@gmail.com",
+      "subject": "Hi ",
+      "body": "Hi I am good",
+      "conversation_id": "20",
+      "timestamp": "2017-03-08 22:08:39",
+      "attachment_ids": null,
+      "draft": "0",
+      "sent_trash": "0"
+    }
+  },
+  {
+    "id": "3",
+    "mail_id": "1",
+    "to": "amitvbn@gmail.com",
+    "trash": "0",
+    "read": "0",
+    "timestamp": "2017-02-17 01:29:29",
+    "mail_details": {
+      "id": "1",
+      "sender": "amitvbn@gmail.com",
+      "subject": "Hi ",
+      "body": "Hi I am good",
+      "conversation_id": null,
+      "timestamp": "2017-02-17 03:19:46",
+      "attachment_ids": null,
+      "draft": "0",
+      "sent_trash": "0"
+    }
+  }
+];
+
+
+   function f1(obj)
+    {
+       alert("f1 called");
+       obj.style.color = 'red';
+       //form validation that recalls the page showing with supplied inputs.    
+    }
+
+var mails = inbox_data;//JSON.parse(inbox_data);
+var user = user_data;//JSON.parse(inbox_data);
+
+document.getElementById("welcometext").innerHTML = "<h4>Hello "+user.name+"("+user.email+")</h4>";
+
+for(i=0;i<mails.length;i++)
+{
+  //alert(i);
+   document.getElementById("inboxtable").innerHTML += "<tr id=\"mail"+i+"\" onclick='showmailRow(this, "+i+")' style=\"font-weight: 600;\">" + "<td>"+mails[i].mail_details.timestamp +"</td><td>"+mails[i].mail_details.sender +"</td><td>"+mails[i].mail_details.subject+"</td><td>"+mails[i].mail_details.body+"</td>" + "<td><button type='button' onclick='delete("+i+")'>Delete</button></td></tr>";
+
+}
+
+function showmailRow(obj, i){
+   //alert("\"Row mail"+i+"\"");
+   document.getElementById("mail"+i).style.color = 'green';
+   document.getElementById("mail"+i).style.fontWeight  = "300";
+}
+
+
+
+</script>
